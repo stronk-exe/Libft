@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 11:18:47 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/11 12:00:06 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/15 01:28:19 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,13 @@ int	set_count(char const *s, char c)
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**chek_and_fill(char **t, char const *s, char c)
 {
-	char	**t;
-	int		i;
-	int		count;
-	int		temp;
+	int	i;
+	int	count;
+	int	temp;
 
 	i = 0;
-	if (s == 0)
-		return (0);
-	count = set_count(s, c);
-	t = (char **)malloc(sizeof(char *) * (count + 1));
-	if (t == NULL)
-		return (0);
 	count = 0;
 	while (s[i])
 	{
@@ -63,5 +56,19 @@ char	**ft_split(char const *s, char c)
 	}
 	t[count] = 0;
 	return (t);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**t;
+	int		count;
+
+	if (s == 0)
+		return (0);
+	count = set_count(s, c);
+	t = (char **)malloc(sizeof(char *) * (count + 1));
+	if (t == NULL)
+		return (0);
+	return (chek_and_fill(t, s, c));
 	free(t);
 }

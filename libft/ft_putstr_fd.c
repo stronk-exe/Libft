@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 14:41:11 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/10 17:34:20 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/15 01:06:52 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	ft_putstr_fd(char	*s, int fd)
 {
 	int	i;
 
-	i = 0;
-	while (s[i])
+	if (s != 0)
 	{
-		write(fd, &s[i], 1);
-		i++;
+		i = 0;
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
 	}
 }

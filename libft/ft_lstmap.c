@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 17:28:16 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/14 18:03:34 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/15 01:08:27 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,28 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*node;
+	t_list	*new;
+	t_list	*first;
 
-	node = ft_lstnew(lst->content);
+	first = NULL;
+	if (lst == NULL)
+		return (NULL);
 	while (lst != NULL)
 	{
-		f(lst->content);
-		lst = lst->content;
+		if (!(new = ft_lstnew(f(lst->content))))
+		{
+			while (first != NULL)
+			{
+				new = first->next;
+				del(first->content);
+				free(first);
+				first = new;
+			}
+			lst = NULL;
+			return (NULL);
+		}
+		ft_lstadd_back(&first, new);
+		lst = lst->next;
 	}
-	del(lst->content);
-	return (node);
+	return (first);
 }

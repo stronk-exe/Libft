@@ -10,10 +10,23 @@ int main()
 	//printf("%s", memcpy(0, 0, 2));
 	//ft_putnbr_fd(11,1);
 
+char **t;
+	//char *s = "000hi00hello0world0my0world00";
+	t = ft_split("00hi00hello0world0my0world00",'0');
+	//t = ft_split("\0aa\0nnn\0",'\0');
+	int i = 0;
+	//int j = 0;
+	while (t[i])
+	{
+		printf("%s\n", t[i]);
+		i++;
+	}
+
 	//printf("%s", strrchr("tripouille", '\0'));
 
 	//printf("%d\n", ft_atoi("0"));
-	//printf("%d\n", atoi("0"));
+	//printf("%d\n", atoi("9223372036854775809"));
+	//printf("%d\n", ft_atoi("9223372036854775809"));
 	//printf("%s\n", ft_itoa(-2147483648));
 	//printf("%d", itoa("9223372036854775809"));
 
