@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 21:22:46 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/15 19:59:59 by ael-asri         ###   ########.fr       */
+/*   Created: 2021/11/13 16:38:16 by ael-asri          #+#    #+#             */
+/*   Updated: 2021/11/16 14:49:18 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void	*))
 {
-	size_t	i;
-	char	*p;
+	t_list	*list;
 
-	p = s;
-	i = 0;
-	while (i < n)
+	list = *lst;
+	while (*lst != NULL)
 	{
-		p[i] = '\0';
-		i++;
+		*lst = list->next;
+		del(list->content);
+		free(list);
+		list = *lst;
 	}
 }

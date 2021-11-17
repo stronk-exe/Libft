@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 21:22:46 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/15 19:59:59 by ael-asri         ###   ########.fr       */
+/*   Created: 2021/11/13 15:13:07 by ael-asri          #+#    #+#             */
+/*   Updated: 2021/11/16 08:40:14 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
-	char	*p;
+	t_list	*list;
 
-	p = s;
-	i = 0;
-	while (i < n)
+	list = *lst;
+	if (*lst == 0)
 	{
-		p[i] = '\0';
-		i++;
+		*lst = new;
+		return ;
 	}
+	while (list->next != NULL)
+	{
+		list = list->next;
+	}
+	list->next = new;
 }

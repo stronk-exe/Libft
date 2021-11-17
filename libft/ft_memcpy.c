@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:10:48 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/14 22:54:15 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/16 03:52:59 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 void	*ft_memcpy(void *dst, const void	*src, size_t	n)
 {
-	unsigned char	*s;
-	unsigned char	*d;
+	char	*s;
+	char	*d;
+	size_t	i;
 
-	//if (src == 0 && dst == 0)
-	//	return (0);
-	s = (unsigned char *)src;
-	d = (unsigned char *)dst;
-	while (n > 0)
+	if (dst == 0)
+		return (0);
+	i = 0;
+	s = (char *)src;
+	d = (char *)dst;
+	while (i < n)
 	{
-		*d++ = *s++;
-		n--;
+		d[i] = s[i];
+		i++;
 	}
 	return (dst);
 }

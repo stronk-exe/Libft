@@ -6,25 +6,14 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 17:55:59 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/11 11:19:46 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/15 21:12:01 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*int	ft_strlen(const char	*str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}*/
-
-size_t	ft_strlcat(char *dst, const char *src, size_t	dstsize)
+size_t	ft_strlcat(char *restrict	dst, const char *restrict	src,
+		size_t	dstsize)
 {
 	unsigned int	src_len;
 	unsigned int	dest_len;

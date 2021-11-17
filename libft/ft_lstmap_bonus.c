@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 21:22:46 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/15 19:59:59 by ael-asri         ###   ########.fr       */
+/*   Created: 2021/11/14 17:28:16 by ael-asri          #+#    #+#             */
+/*   Updated: 2021/11/17 16:31:26 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	char	*p;
+	t_list	*list;
+	t_list	*node;
+	t_list	*l;
 
-	p = s;
-	i = 0;
-	while (i < n)
+	l = lst;
+	while (l != NULL)
 	{
-		p[i] = '\0';
-		i++;
+		node = ft_lstnew(f(l->content));
+		ft_lstadd_back(&list, node);
+		l = l->next;
 	}
+	ft_lstclear(&l, del);
+	return (list);
 }

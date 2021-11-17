@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 19:24:09 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/11 19:51:10 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/15 23:05:49 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_rev(char	*s)
 	}
 }
 
-char	*ft_convert(char *s, long n, int count)
+char	*ft_convert(char *s, int n, int count)
 {
 	int		i;
 	int		nb;
@@ -55,10 +55,25 @@ char	*ft_convert(char *s, long n, int count)
 	return (s);
 }
 
+char	*fill_tab(char *s)
+{
+	char	*nb;
+	int		i;
+
+	i = 0;
+	nb = "-2147483648";
+	while (i < 12)
+	{
+		s[i] = nb[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}
+
 char	*allocate(long n)
 {
 	char	*s;
-	char	*nb;
 	int		i;
 
 	s = NULL;
@@ -71,39 +86,13 @@ char	*allocate(long n)
 	}
 	else if (n == -2147483648)
 	{
-		nb = "-2147483648";
 		s = malloc(sizeof(char) * 12);
 		if (s == NULL)
 			return (0);
-		while (i < 12)
-		{
-			s[i] = nb[i];
-			i++;
-		}
-		s[i] = '\0';
+		s = fill_tab(s);
 	}
 	return (s);
 }
-/*char	*is_empty(void)
-{
-	char	*s;
-
-	s = malloc(2);
-	s[0] = '0';
-	s[1] = '\0';
-	return (s);
-}
-
-char	*intmin(void)
-{
-	char	*s;
-
-	s = malloc(sizeof(char) * 11);
-	s = "-2147483648";
-	s[11] = '\0';
-	printf("%c\n", s[11]);
-	return (s);
-}*/
 
 char	*ft_itoa(int n)
 {
@@ -130,5 +119,5 @@ char	*ft_itoa(int n)
 	s = malloc(sizeof(char) * (count + 1));
 	if (s == NULL)
 		return (0);
-	return (ft_convert(s, (long)n, count));
+	return (ft_convert(s, n, count));
 }

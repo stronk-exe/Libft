@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 14:42:05 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/10 22:23:32 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/16 10:40:21 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	ft_putnbr_fd(int n, int fd)
 
 	nb = n;
 	if (n == -2147483648)
+	{
 		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
 	if (n < 0)
 		ft_putchar_fd('-', fd);
 	if (nb > 9)

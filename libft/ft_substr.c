@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 21:31:09 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/11 09:59:05 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/15 22:07:54 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ char	*ft_substr(char const	*s, unsigned int start, size_t	len)
 	while (s[i] != '\0')
 	{
 		if (i >= start && j < len)
-		{
-			tab[j] = s[i];
-			j++;
-		}
+			tab[j++] = s[i];
 		i++;
 	}
 	tab[j] = '\0';

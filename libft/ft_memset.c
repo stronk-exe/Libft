@@ -6,7 +6,7 @@
 /*   By: ael-asri <ael-asri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 12:26:24 by ael-asri          #+#    #+#             */
-/*   Updated: 2021/11/09 11:07:32 by ael-asri         ###   ########.fr       */
+/*   Updated: 2021/11/16 02:24:09 by ael-asri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
+	size_t			i;
 	unsigned char	*p;
 
 	p = b;
-	while (len > 0)
+	i = 0;
+	while (i < len)
 	{
-		*p++ = c;
-		len--;
+		p[i] = (unsigned char)c;
+		i++;
 	}
 	return (b);
 }
